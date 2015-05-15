@@ -3,7 +3,7 @@
 % Dirichlet Conditions
 % u(0) = u(1) = 0
 % with uniform mesh
-% and trapezis method
+% and trapezoid method
 %
 % Input:
 % N -> Number of nodes
@@ -26,6 +26,7 @@ for i=1:N-1
 end
 
 % Create the Kh matrix
+% Trapezoid Method
 Kh = zeros (N-1, N-1);
 for i=1:N-1
     if i==1 % First row

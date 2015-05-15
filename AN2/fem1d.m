@@ -1,7 +1,8 @@
 % Solve -u'' = f
 % Dirichlet Conditions
 % u(0) = u(1) = 0
-% with uniform mesh
+% with uniform and random mesh
+% and trapezoid method
 %
 % Input:
 % N -> Number of nodes
@@ -14,13 +15,13 @@ close all
 % Nodes'number definition
 N = 9;
 
-% For random nodes:
+% random mesh
 % x = unique(sort(rand(1,N)));
-% N = length(X)+1;
+% N = length(x)+1;
 
+% uniform mesh
+x = zeros(1,N-1);
 
-% Create a vector x with the internal points
-x = zeros (1, N-1); % Vector Initialisation
 for i=1:N-1
     x(i) = (i/N)^2;
 end
@@ -58,7 +59,7 @@ for i=1:N-1
     end
 end
 
-% Field force definition
+% Field force definition (Trapezoid)
 fh = zeros(N-1,1);
 for i=1:N-1
     fh(i) = (h(i)+h(i+1)/2) * f4(x(i));

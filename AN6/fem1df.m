@@ -1,13 +1,11 @@
-function [hmax, errmaxT, errmaxM, errmaxS] = fem1d(N)
+function [hmax, errT, errM, errS] = fem1df(N)
 
-% Solve -(cu')' = f
+
+% Solve -u'' = f
 %
 % Dirichlet Conditions
-% 			 u(0)=alpha
-%            u(1)=beta
-
+% u(0) = u(1) = 0
 % with uniform and random mesh
-
 % With the following methods
 % - trapezoid method
 % - medium point method
@@ -17,23 +15,21 @@ function [hmax, errmaxT, errmaxM, errmaxS] = fem1d(N)
 % N -> Number of nodes
 % f -> Force field
 
-
-alpha = ue(0);
-beta = ue(1);
+clear all
+close all
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ASSEGNAZIONE DELLE X
+% X Definition
 
-
-% Random Mesh
+% random mesh
 %x = unique(sort(rand(1,N)));
 %N = length(x)+1;
 
-% creiamo un vettore x con i punti interni
+% uniform mesh
 x = zeros(1,N-1);
 
 for i=1:N-1
-    x(i) = (i/N);
+    x(i) = (i/N)^2;
 end
 
 
@@ -63,21 +59,15 @@ Kh = zeros(N-1,N-1); % Kh Matrix Definition
 % For Loop, Kh(i) Calculation
 for i=1:N-1
     if i==1 % First Row
-        xms=( 0   + x(1))/2;
-        xmd=(x(1) + x(2))/2;
-        Kh(1,1) = +c(xms)/h(1) + c(xmd)/h(2);
-        Kh(1,2) = -c(xmd)/h(2);
+        Kh(1,1) = +1/h(1) + 1/h(2);
+        Kh(1,2) = -1/h(2);
     elseif i==N-1 % Last Row
-        xms=(x(N-2) + x(N-1))/2;
-        xmd=(x(N-1) +   1   )/2;
-        Kh(N-1,N-2) = -c(xms)/h(N-1);
-        Kh(N-1,N-1) = +c(xms)/h(N-1) +c(xmd)/h(N);
+        Kh(N-1,N-2) = -1/h(N-1);
+        Kh(N-1,N-1) = +1/h(N-1) +1/h(N);
     else % Generic Row (with 3 non-zero elements)
-        xms=(x(i-1) +  x(i) )/2;
-        xmd=( x(i)  + x(i+1))/2;
-        Kh(i,i-1) = -c(xms)/h( i );
-        Kh(i,i)   = +c(xms)/h( i ) + c(xmd)/h(i+1);
-        Kh(i,i+1) = -c(xmd)/h(i+1);
+        Kh(i,i-1) = -1/h( i );
+        Kh(i,i)   = +1/h( i ) + 1/h(i+1);
+        Kh(i,i+1) = -1/h(i+1);
     end
 end
 
@@ -98,7 +88,7 @@ end
 
 % For Loop Medium Point
 for i=1:N-1
-    if i==1
+    if i==1 % First Row
         xms=( 0   + x(1))/2;
         xmd=(x(1) + x(2))/2;
         fhM(1) = ...
@@ -107,13 +97,13 @@ for i=1:N-1
         fhS(1) = ...
             h(1)/6 * (0 + 4*(f(xms)/2)+ f(x(1))) + ...
             h(2)/6 * (f(x(1)) + 4*(f(xmd)/2) + 0);            
-    elseif i==N-1
+    elseif i==N-1 % Last Row
         xms=(x(N-2) + x(N-1))/2;
         xmd=(x(N-1) +   1   )/2;
         fhM(N-1) = ...
             h(N-1)/2 * f(xms)+...
             h(N)/2   * f(xmd);
-    else
+    else % Generic Row
         xms=(x(i-1) +  x(i) )/2;
         xmd=( x(i)  + x(i+1))/2;
         fhM(i) = ...
@@ -145,17 +135,6 @@ for i=1:N-1
             h(i+1)/6 * (f(x(i)) + 4*(f(xmd)/2) + 0);
     end
 end    
-
-
-% Edit Fh For Non Omogenous Conditions
-xms=( 0   + x(1))/2;
-xmd=(x(N-1) +   1   )/2;
-fhT(1) = fhT(1) - (-alpha/h(1))*c(xms);
-fhM(1) = fhM(1) - (-alpha/h(1))*c(xms);
-fhS(1) = fhS(1) - (-alpha/h(1))*c(xms);
-fhT(N-1) = fhT(N-1) - (-beta/h(N))*c(xmd);
-fhM(N-1) = fhM(N-1) - (-beta/h(N))*c(xmd);
-fhS(N-1) = fhS(N-1) - (-beta/h(N))*c(xmd);
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -194,61 +173,16 @@ legend(...
     'exact solution');
 
 
-% Solution uh calculated in nodes and in medium points
-errmaxT = 0;
-errmaxM = 0;
-errmaxS = 0;
-for i=1:N-1
-    % error in x(i)
-    errT = abs(uhT(i) - ue(x(i)));
-    errM = abs(uhM(i) - ue(x(i)));
-    errS = abs(uhS(i) - ue(x(i)));
-    if (errT > errmaxT)
-        errmaxT = errT;
-    end
-    if (errM > errmaxM)
-        errmaxM = errM;
-    end
-    if (errS > errmaxS)
-        errmaxS = errS;
-    end
-    % error in x(i)-h(i)/2
-    if i==1
-        errT = abs((uhT(i)+alpha)/2 - ue(x(i)-h(i)/2));
-        errM = abs((uhM(i)+alpha)/2 - ue(x(i)-h(i)/2));
-        errS = abs((uhS(i)+alpha)/2 - ue(x(i)-h(i)/2));
-    else
-         errT = abs((uhT(i)+uhT(i-1))/2 - ue(x(i)-h(i)/2));
-         errM = abs((uhM(i)+uhM(i-1))/2 - ue(x(i)-h(i)/2));
-         errS = abs((uhS(i)+uhS(i-1))/2 - ue(x(i)-h(i)/2));
-    end
-    if (errT > errmaxT)
-        errmaxT = errT;
-    end
-    if (errM > errmaxM)
-        errmaxM = errM;
-    end
-    if (errS > errmaxS)
-        errmaxS = errS;
-    end
-end
 
-
-% medium point last intervall
-errT = abs(uhT(N-1)+beta)/2-ue(1-h(N)/2);
-errM = abs(uhM(N-1)+beta)/2-ue(1-h(N)/2);
-errS = abs(uhS(N-1)+beta)/2-ue(1-h(N)/2);
-if (errT > errmaxT)
-        errmaxT = errT;
- end
- if (errM > errmaxM)
-    errmaxM = errM;
- end
- if (errS > errmaxS)
-    errmaxS = errS;
- end
-    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Errors
+errT = max(abs(uhT' - ue(x) ));
+errM = max(abs(uhM' - ue(x) ));
+errS = max(abs(uhS' - ue(x) ));
 
 hmax = max(h);
 
 end
+
+
+

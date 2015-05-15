@@ -1,3 +1,10 @@
+% Plot errors of
+% - trapezoid method
+% - medium point method
+% - simpson method
+%
+
+
 clear all
 close all
 

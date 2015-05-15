@@ -1,7 +1,8 @@
 % Solve -u'' = f
 % Dirichlet Conditions
 % u(0) = u(1) = 0
-% with uniform mesh
+% with uniform and random mesh
+% and medium point method
 %
 % Input:
 % N -> Number of nodes
@@ -58,14 +59,14 @@ for i=1:N-1
     end
 end
 
-% Field force definition
+% Field force definition (Medium Point)
 fh = zeros(N-1,1);
 for i=1:N-1
-    if i==1
+    if i==1 % First Row
         fh(1)=h(1)/2*f((0+x(1))/2)+h(2)/2*f((x(1)+x(2))/2);
-    elseif i==N-1
+    elseif i==N-1 % Last Row
         fh(N-1) = a(N-1)/2*f((x(N-1)+x(N-1))/2)+h(N)/2+f((x(N-1)+1)/2);
-    else
+    else % General Row
         fh(i) = h(i)/2+f((x(i-1)+x(i))/2)+h(i+1)/2*f((x(i)+x(i+1))/2);
     end
 end

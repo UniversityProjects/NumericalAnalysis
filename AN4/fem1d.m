@@ -1,7 +1,8 @@
 % Solve -u'' = f
 % Dirichlet Conditions
 % u(0) = u(1) = 0
-% with uniform mesh
+% with uniform and random mesh
+% and simpson method
 %
 % Input:
 % N -> Number of nodes
@@ -58,7 +59,7 @@ for i=1:N-1
     end
 end
 
-% Field force definition
+% Field force definition (Simpson)
 fh = zeros(N-1,1);
 for i=1:N-1
     if i==1
