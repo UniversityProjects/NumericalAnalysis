@@ -3,8 +3,8 @@
 Corso di analisi numerica sugli elementi finiti monodimensionali
 
 In particolare si affronta la discretizzazione spaziale con mesh:
-	-uniforme
-	-non uniforme
+	*uniforme
+	*non uniforme
 	
 Usando i seguenti metodi di integrazione numerica:
 	- metodo dei trapezi
