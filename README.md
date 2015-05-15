@@ -40,29 +40,50 @@ AN1: Equazione delle oscillazioni
         
 AN2: Equazione delle oscillazioni
         - Condizioni di Dirichlet omogenee
-        - Mesh Uniforme E Non Uniforme
+        - Mesh Uniforme E Non Uniforme (Random)
         - Metodo Dei Trapezi
         - Confronto Grafico Approssimazione E Soluzione Esatta
 
 
 AN3: Equazione delle oscillazioni
         - Condizioni di Dirichlet omogenee
-        - Mesh Uniforme E Non Uniforme
+        - Mesh Uniforme E Non Uniforme (Random)
         - Metodo Del Punto Medio
         - Confronto Grafico Approssimazione E Soluzione Esatta
         
         
 AN4: Equazione delle oscillazioni
         - Condizioni di Dirichlet omogenee
-        - Mesh Uniforme E Non Uniforme
+        - Mesh Uniforme E Non Uniforme (Random)
         - Metodo Simpson
         - Confronto Grafico Approssimazione E Soluzione Esatta
 
 
 AN5: Equazione delle oscillazioni
         - Condizioni di Dirichlet omogenee
-        - Mesh Randomizzata
+        - Mesh Uniforme E Non Uniforme (Random)
         - Metodo Dei Trapezi
         - Metodo Del Punto Medio
         - Metodo Di Simpson
+        - Calcolo Errori
         - Confronto Grafico Approssimazioni E Soluzione Esatta
+        
+        
+AN6: Equazione delle oscillazioni
+        - Condizioni di Dirichlet omogenee
+        - Mesh Uniforme E Non Uniforme (Random)
+        - Metodo Dei Trapezi
+        - Metodo Del Punto Medio
+        - Metodo Di Simpson
+        - Calcolo Errori
+        - Confronto Grafico Approssimazioni E Soluzione Esatta
+        - Grafico Errori Delle Approssimazioni
+        
+
+AN7: Equazione delle oscillazioni
+	    - Condizioni di Dirichlet omogenee
+        - c == 1
+        - Mesh Uniforme E Non Uniforme (Random)
+        - Metodo Dei Trapezi
+        - Calcolo Errori
+        - Confronto Grafico Approssimazione E Soluzione Esatta
