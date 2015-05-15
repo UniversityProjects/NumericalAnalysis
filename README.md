@@ -22,10 +22,10 @@ Con associati i seguenti metodi per la risoluzione di ODE temporali:
 
 	
 Considerando le condizioni al bordo:
+
 	- Dirichlet omogenee
 	- Dirichlet non omogenee
-	- Neumann omogenee
-	- Neumann non omogenee
+	
 	
 Per le seguenti tipologie di equazioni alle derivate parziali:
 
