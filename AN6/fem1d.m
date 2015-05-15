@@ -1,4 +1,4 @@
-function [hmax, errT, errM, errS] = fem1df(N)
+function [hmax, errT, errM, errS] = fem1d(N)
 
 
 % risolviamo -u''=f

@@ -26,7 +26,6 @@ for i=1:N-1
 end
 
 % Create the Kh matrix
-% Trapezis Method
 Kh = zeros (N-1, N-1);
 for i=1:N-1
     if i==1 % First row
