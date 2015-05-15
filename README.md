@@ -89,7 +89,7 @@ AN7: Equazione delle oscillazioni
         - Confronto Grafico Approssimazione E Soluzione Esatta
         
 
-AN8: Equazione delle oscillazioni | C generica Aggiunta Script per ue generica
+AN8: Equazione delle oscillazioni
         - Condizioni di Dirichlet omogenee
         - c generica
         - Mesh Uniforme E Non Uniforme (Random)
@@ -101,3 +101,15 @@ AN8: Equazione delle oscillazioni | C generica Aggiunta Script per ue generica
         - Grafico Errori Delle Approssimazioni
         - Creazione script (genue.m) per il calcolo automatico delle ue
         
+        
+AN9: Equazione delle oscillazioni
+        - Condizioni di Dirichlet non omogenee
+        - c generica
+        - Mesh Uniforme E Non Uniforme (Random)
+        - Metodo Dei Trapezi
+        - Metodo Del Punto Medio
+        - Metodo Di Simpson
+        - Calcolo Errori
+        - Confronto Grafico Approssimazioni E Soluzione Esatta
+        - Grafico Errori Delle Approssimazioni
+        - Creazione script (genue.m) per il calcolo automatico delle ue
