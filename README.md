@@ -35,11 +35,18 @@ AN1: Equazione delle oscillazioni
         - Condizioni di Dirichlet omogenee
         - Mesh Uniforme
         - Metodo Dei Trapezi
-        - Confronto Approssimazione E Soluzione Esatta
+        - Confronto Grafico Approssimazione E Soluzione Esatta
         
         
 AN2: Equazione delle oscillazioni
         - Condizioni di Dirichlet omogenee
         - Mesh Uniforme E Non Uniforme
         - Metodo Dei Trapezi
-        - Confronto Approssimazioni E Soluzione Esatta
+        - Confronto Grafico Approssimazione E Soluzione Esatta
+
+
+AN3: Equazione delle oscillazioni
+        - Condizioni di Dirichlet omogenee
+        - Mesh Uniforme E Non Uniforme
+        - Metodo Del Punto Medio
+        - Confronto Grafico Approssimazione E Soluzione Esatta
