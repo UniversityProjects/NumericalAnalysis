@@ -113,3 +113,16 @@ AN9: Equazione delle oscillazioni
         - Confronto Grafico Approssimazioni E Soluzione Esatta
         - Grafico Errori Delle Approssimazioni
         - Creazione script (genue.m) per il calcolo automatico delle ue
+        
+        
+AN10: Equazione del calore
+        - Condizioni di dirichlet omogenee
+        - Rho = 1 (Rho = 0 eq. delle oscillazioni)
+        - U0 = 0 (Condizione Iniziale)
+        - Mesh Uniforme E Randomizzata
+        - Metodo Dei Trapezi
+        - Metodo Del Punto medio
+        - Metodo Di Simpson
+        - Eulero Implicito ODE
+        - Grafico Bidimensionale Per Le Soluzioni (Come Poligono)
+
