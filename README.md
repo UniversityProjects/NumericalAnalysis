@@ -1,21 +1,27 @@
 # NumericalAnalysis
 
-Corso di analisi numerica sugli elementi finiti monodimensionali
+Corso di analisi numerica sugli elementi finiti monodimensionali.
+
 
 In particolare si affronta la discretizzazione spaziale con mesh:
-	*uniforme
-	*non uniforme
+
+	- uniforme
+	- non uniforme
 	
 Usando i seguenti metodi di integrazione numerica:
+
 	- metodo dei trapezi
 	- metodo del punto medio
 	- metodo di simpson
 	
-Con associati i seguenti metodi per la risoluzione di ODE temporali
+	
+Con associati i seguenti metodi per la risoluzione di ODE temporali:
+
 	- eulero implicito
 	- eulero esplicito
+
 	
-COnsiderando le condizioni al bordo:
+Considerando le condizioni al bordo:
 	- Dirichlet omogenee
 	- Dirichlet non omogenee
 	- Neumann omogenee
@@ -32,6 +38,7 @@ dove la scrittura g_x indica la derivata parziale di g rispetto a x.
 =======
 
 AN1: Equazione delle oscillazioni
+
         - Condizioni di Dirichlet omogenee
         - Mesh Uniforme
         - Metodo Dei Trapezi
@@ -39,6 +46,7 @@ AN1: Equazione delle oscillazioni
         
         
 AN2: Equazione delle oscillazioni
+
         - Condizioni di Dirichlet omogenee
         - Mesh Uniforme E Non Uniforme (Random)
         - Metodo Dei Trapezi
@@ -46,6 +54,7 @@ AN2: Equazione delle oscillazioni
 
 
 AN3: Equazione delle oscillazioni
+
         - Condizioni di Dirichlet omogenee
         - Mesh Uniforme E Non Uniforme (Random)
         - Metodo Del Punto Medio
@@ -53,6 +62,7 @@ AN3: Equazione delle oscillazioni
         
         
 AN4: Equazione delle oscillazioni
+
         - Condizioni di Dirichlet omogenee
         - Mesh Uniforme E Non Uniforme (Random)
         - Metodo Simpson
@@ -60,6 +70,7 @@ AN4: Equazione delle oscillazioni
 
 
 AN5: Equazione delle oscillazioni
+
         - Condizioni di Dirichlet omogenee
         - Mesh Uniforme E Non Uniforme (Random)
         - Metodo Dei Trapezi
@@ -70,6 +81,7 @@ AN5: Equazione delle oscillazioni
         
         
 AN6: Equazione delle oscillazioni
+
         - Condizioni di Dirichlet omogenee
         - Mesh Uniforme E Non Uniforme (Random)
         - Metodo Dei Trapezi
@@ -81,7 +93,8 @@ AN6: Equazione delle oscillazioni
         
 
 AN7: Equazione delle oscillazioni
-	    - Condizioni di Dirichlet omogenee
+
+	- Condizioni di Dirichlet omogenee
         - c == 1
         - Mesh Uniforme E Non Uniforme (Random)
         - Metodo Dei Trapezi
@@ -90,6 +103,7 @@ AN7: Equazione delle oscillazioni
         
 
 AN8: Equazione delle oscillazioni
+
         - Condizioni di Dirichlet omogenee
         - c generica
         - Mesh Uniforme E Non Uniforme (Random)
@@ -103,6 +117,7 @@ AN8: Equazione delle oscillazioni
         
         
 AN9: Equazione delle oscillazioni
+        
         - Condizioni di Dirichlet non omogenee
         - c generica
         - Mesh Uniforme E Non Uniforme (Random)
@@ -116,6 +131,7 @@ AN9: Equazione delle oscillazioni
         
         
 AN10: Equazione del calore
+       
         - Condizioni di dirichlet omogenee
         - Rho = 1 (Rho = 0 eq. delle oscillazioni)
         - U0 = 0 (Condizione Iniziale)
