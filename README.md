@@ -57,3 +57,12 @@ AN4: Equazione delle oscillazioni
         - Mesh Uniforme E Non Uniforme
         - Metodo Simpson
         - Confronto Grafico Approssimazione E Soluzione Esatta
+
+
+AN5: Equazione delle oscillazioni
+        - Condizioni di Dirichlet omogenee
+        - Mesh Randomizzata
+        - Metodo Dei Trapezi
+        - Metodo Del Punto Medio
+        - Metodo Di Simpson
+        - Confronto Grafico Approssimazioni E Soluzione Esatta
