@@ -1,8 +1,3 @@
-% risolviamo ru_t-(cu_x)_x=f
-%            u(0,t)=alpha
-%            u(1,t)=beta
-%            
-%
 % Solve ru_t-(cu_x)_x=f
 %
 % Dirichlet Conditions
@@ -27,13 +22,13 @@ close all
 
 N = 10;
 
-% Condizioni Al Bordo Di Dirichlet
+% Dirichlet Boundary Condition
 %
 alpha = 0;
 beta = 0;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% X Definition
+% X Definition (Mesh)
 
 % random mesh
 %x = unique(sort(rand(1,N)));
@@ -43,7 +38,7 @@ beta = 0;
 x = zeros(1,N-1);
 
 for i=1:N-1
-    x(i) = (i/N)^2;
+    x(i) = (i/N);
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -156,7 +151,7 @@ for i=1:N-1
 end    
 
 
-% Edit Fh For Non Omogenous Conditions
+% Edit Fh For Dirichlet Non Omogenous Conditions
 xms=( 0   + x(1))/2;
 xmd=(x(N-1) +   1   )/2;
 fhT(1) = fhT(1) - (-alpha/h(1))*c(xms);
@@ -199,7 +194,7 @@ legend(...
     'f medium point',...
     'f simpson');
     
-title('Soluzione Stazionaria');
+title('Stationary Solution');
 
 
 
@@ -223,7 +218,7 @@ uh = uhT;
 
 Tmax = 1; % Maxiumum Time
 dt = 0.1; % Time Interval
-Nk = round(Tmax/0.1); % Step number (use round to obtain an integer)
+Nk = round(Tmax/dt); % Step number (use round to obtain an integer)
 
 % Matrix that holds all the uhk arrays
 % where uhk(:,k) is the solution at step k (at time k*dt)
@@ -266,6 +261,7 @@ figure(2);
 % Initial data plot
 plot([0 x 1],[alpha uh0' beta],'.-b','LineWidth',lw)
 hold on;
+
 % uhk plot
 for k=1:Nk
     plot([0 x 1],[alpha uhk(:,k)' beta],'.-r','LineWidth',lw)
@@ -278,15 +274,54 @@ plot([0 x 1],[alpha uh' beta],'.-b','LineWidth',lw)
 % Bidimensional Plot
 figure(3);
 
-for k=1:Nk
+
+% General Case (i Generic)
+for k=0:Nk        
     for i=1:N-2
-        X = [x(i+1)      x(i+1)       x(i)      x(i)];
-        T = [k*dt       (k+1)*dt     (k+1)*dt   k*dt];
-        U = [uhk(i+1,k) uhk(i+1,k+1) uhk(i,k+1) uhk(i,k)];
+        X = [x(i)      x(i+1)       x(i+1)       x(i)];
+        T = [k*dt      k*dt         (k+1)*dt     (k+1)*dt];
+        if (k == 0) % Time = 0
+            U = [uh0(i)    uh0(i+1)     uhk(i+1,k+1) uhk(i,k+1)];
+        else % General Time Case
+            U = [uhk(i,k)  uhk(i+1,k)   uhk(i+1,k+1) uhk(i,k+1)];
+        end
         patch(X,T,U,'w')
     end
 end
 
+% i = 0 x_0 = 0
+i = 0;
+for k=0:Nk        
+    X = [0         x(i+1)       x(i+1)       0];
+    T = [k*dt      k*dt         (k+1)*dt     (k+1)*dt];
+    if (k == 0) % Time = 0
+        U = [alpha    uh0(i+1)     uhk(i+1,k+1) alpha];
+    else % General Time Case
+        U = [alpha    uhk(i+1,k)   uhk(i+1,k+1) alpha];
+    end
+    patch(X,T,U,'w')
+end
+
+% i = N-1 x_N = 1
+i = N-1;
+for k=0:Nk        
+    X = [x(i)      1             1            x(i)];
+    T = [k*dt      k*dt         (k+1)*dt     (k+1)*dt];
+    if (k == 0) % Time = 0
+        U = [uh0(i)    beta     beta    uhk(i,k+1)];
+    else % General Time Case
+        U = [uhk(i,k)  beta     beta    uhk(i,k+1)];
+    end
+    patch(X,T,U,'w')
+   
+end
+
+% Force Tridimensional View
+view(3)
+
+
+% Title with ODE method name
+title('Implicit Euler');
          
             
 

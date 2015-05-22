@@ -141,4 +141,17 @@ AN10: Equazione del calore
         - Metodo Di Simpson
         - Eulero Implicito ODE
         - Grafico Bidimensionale Per Le Soluzioni (Come Poligono)
+		
+
+AN11: Equazione del calore
+       
+        - Condizioni di dirichlet omogenee
+        - Rho = 1 (Rho = 0 eq. delle oscillazioni)
+        - U0 = 0 (Condizione Iniziale)
+        - Mesh Uniforme E Randomizzata
+        - Metodo Dei Trapezi
+        - Metodo Del Punto medio
+        - Metodo Di Simpson
+        - Eulero Esplicito ODE
+        - Grafico Bidimensionale Per Le Soluzioni (Come Poligono)
 
