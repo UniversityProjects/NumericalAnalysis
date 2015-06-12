@@ -94,7 +94,7 @@ AN6: Equazione delle oscillazioni
 
 AN7: Equazione delle oscillazioni
 
-	- Condizioni di Dirichlet omogenee
+		- Condizioni di Dirichlet-Neumann omogenee
         - c == 1
         - Mesh Uniforme E Non Uniforme (Random)
         - Metodo Dei Trapezi

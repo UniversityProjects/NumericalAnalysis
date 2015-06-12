@@ -31,6 +31,27 @@ N = length(x)+1;
 %    x(i) = (i/N)^2;
 %end
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% h Step Array
+% h(i) = x(i) - x(i-1)
+
+h = zeros(1,N); % h Array Definition
+
+% For Loop, h Calculation
+for i=1:N
+    if i==1 % h(1) = x(1)-x(0), x(0) = 0
+        h(1) = x(1)-0;        
+    elseif i==N % h(N) = x(N)-x(N-1), x(N) = 1
+        h(N) = 1-x(N-1);        
+    else
+        h(i) = x(i)-x(i-1);
+    end
+end
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Kh Matrix
 
